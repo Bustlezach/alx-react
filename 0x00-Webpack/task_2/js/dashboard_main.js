@@ -18,8 +18,9 @@ function updateCounter() {
 
 $('button').on('click', _.debounce(updateCounter, 500));
 
-// const btn = document.querySelector('#count');
 
+
+// const btn = document.querySelector('#count');
 // function updateCounter() {
 //   count += 1;
 //   btn.innerHTML = `${count} clicks on the button`;
