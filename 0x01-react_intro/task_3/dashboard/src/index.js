@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
 import Notifications from './Notifications';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.render(<App />, document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <div id="root-notifications">
