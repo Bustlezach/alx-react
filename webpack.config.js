@@ -11,9 +11,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Custom template',
-      // minify: {
-      //   collapseWhitespace: true
-      // },
       // Load a custom template (lodash by default)
       template: './src/index.html'
     })
@@ -23,9 +20,6 @@ module.exports = {
     contentBase: './dist',
     hot: true,
   },
-  stats: {
-    children: true,
-  },
   module: {
     rules: [
       {
@@ -34,12 +28,15 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader'
-          },
-        ],
+        use: ['file-loader', {loader: 'image-webpack-loader'}],
+      },
+      {
+        test: /\.(js|jsx)$/i,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react']
+        },
       },
     ],
   },
