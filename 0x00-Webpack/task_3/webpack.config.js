@@ -17,7 +17,11 @@ module.exports = {
     maxEntrypointSize: 1000000,
   },
   plugins: [
-    new CleanWebpackPlugin(), new HtmlWebpackPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      chunks: 'public',
+    }),
   ],
   devServer: {
     port: 8564,
