@@ -1,0 +1,11 @@
+.tags {
+  font-weight: bold;
+}
+
+.body input {
+  margin-right: 1rem;
+}
+
+.body button {
+  cursor: pointer;
+}
