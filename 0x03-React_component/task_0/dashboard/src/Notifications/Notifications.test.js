@@ -1,20 +1,29 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from "react";
+import { shallow } from "enzyme";
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Notifications from './Notifications';
 import { getLatestNotification } from '../utils/utils';
 
-describe('<Notification />', () => {
-  it('renders without crashing', () => {
-    const wrapper = shallow(<Notifications />);
-    shallow(<Notifications />);
-  });
+Enzyme.configure({ adapter: new Adapter() });
 
-  it('Notification Item with html', () => {
-    const wrapper = shallow(<Notifications displayDrawer />);
+
+let wrapper = shallow(<Notifications />);
+describe('Notifications component', () => {
+  it('Renders without crashing', () => {
+    expect(wrapper.exists()).toBe(true);
+  });
+  it('renders NotificationItem elements', () => {
+    wrapper = shallow(<Notifications displayDrawer={true} />);
     const nItem = wrapper.find('NotificationItem');
+    expect(nItem).toBeTruthy();
     expect(nItem).toBeDefined();
   });
-
+  it('renders the text Here is the list of notifications', () => {
+    wrapper = shallow(<Notifications displayDrawer={true} />);
+    const result = wrapper.find('.Notifications p').text();
+    expect(result).toBe('Here is the list of notifications');
+  });
   it('menuItem with displayDrawer false', () => {
     const wrapper = shallow(<Notifications />);
     const mItem = wrapper.find('div.menuItem');
