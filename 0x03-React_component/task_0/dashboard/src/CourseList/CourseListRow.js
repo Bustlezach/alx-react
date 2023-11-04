@@ -1,34 +1,32 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-
-
-function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
+const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
   let tr = undefined;
 
-  if(isHeader === true) {
-    if(textSecondCell  === null) {
-        tr = <th colspan='2'>{textFirstCell}</th>;
-  } else {
+  if (isHeader === true) {
+    if (textSecondCell === null) {
+      tr = <th colSpan='2'>{textFirstCell}</th>;
+    } else {
+      tr = (
+        <Fragment>
+          <th>{textFirstCell}</th>
+          <th>{textSecondCell}</th>
+        </Fragment>
+      );
+    }
+  }
+  if (isHeader === false) {
     tr = (
       <Fragment>
-        <th>{textFirstCell}</th>
-        <th>{textSecondCell}</th>
+        <td>{textFirstCell}</td>
+        <td>{textSecondCell}</td>
       </Fragment>
     );
   }
- }
 
- if (isHeader === false) {
-  tr = (
-    <Fragment>
-      <td>{textFirstCell}</td>
-      <td>{textSecondCell}</td>
-    </Fragment>
-  );
- }
- return <tr>{tr}</tr>;
-}
+  return <tr>{tr}</tr>;
+};
 
 CourseListRow.defaultProps = {
   isHeader: false,

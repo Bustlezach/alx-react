@@ -4,7 +4,6 @@ import CourseListRow from './CourseListRow';
 import PropTypes from 'prop-types';
 import CourseShape from './CourseShape';
 
-
 const CourseList = ({ listCourses }) => {
   return (
     <table className='course-list'>

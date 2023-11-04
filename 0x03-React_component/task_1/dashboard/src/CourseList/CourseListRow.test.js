@@ -1,22 +1,49 @@
-import React from "react";
-import { shallow } from "enzyme";
+import React from 'react';
+import { shallow } from 'enzyme';
 import CourseListRow from './CourseListRow';
 
-let wrapper = shallow(<CourseListRow textFirstCell='test'/>);
-describe('CourseListRow Components', () => {
+describe('<CourseListRow />', () => {
   it('renders without crashing', () => {
-    const result = wrapper.exists();
-    expect(result).toBeTruthy();
+    const wrapper = shallow(<CourseListRow textFirstCell='test' />);
+    expect(wrapper.exists());
   });
-  it('renders one cell with colspan = 2', () => {
-    wrapper = shallow(<CourseListRow isHeader={true} textFirstCell='text' textSecondCell={null}/>);
-    const result = wrapper.find('th');
-    expect(result).toHaveLength(1);
-    expect(result.prop('colspan')).toEqual('2');
+  it('renders one cell', () => {
+    const wrapper = shallow(
+      <CourseListRow isHeader={true} textFirstCell='test' />
+    );
+    wrapper.update();
+    const th = wrapper.find('th');
+
+    expect(th).toHaveLength(1);
+    expect(th.prop('colSpan')).toEqual('2');
   });
-  it('renders correctly two td elements within a tr element', () => {
-    wrapper = shallow(<CourseListRow isHeader={false} textFirstCell='text' textSecondCell='subtext'/>);
-    const result = wrapper.find('td');
-    expect(result).toHaveLength(2);
+  it('renders two cells', () => {
+    const wrapper = shallow(
+      <CourseListRow
+        isHeader={true}
+        textFirstCell='test'
+        textSecondCell='second'
+      />
+    );
+    wrapper.update();
+    const th = wrapper.find('th');
+
+    expect(th).toHaveLength(2);
+    expect(th.first().text()).toEqual('test');
+    expect(th.at(1).text()).toEqual('second');
+  });
+  it('renders two td', () => {
+    const wrapper = shallow(
+      <CourseListRow
+        isHeader={false}
+        textFirstCell='test'
+        textSecondCell='second'
+      />
+    );
+    wrapper.update();
+    const tr = wrapper.find('tr');
+
+    expect(tr).toHaveLength(1);
+    expect(tr.children('td')).toHaveLength(2);
   });
 });

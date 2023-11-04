@@ -2,17 +2,15 @@ import React from 'react';
 import './Login.css';
 
 function Login() {
-  return(
-    <div>
-      <main role='main' className='body'>
-        <p className='tags'>Login to access the full dashboard</p>
-        <label htmlFor='email' id='tags'>Email: </label>
-        <input name='email' type='email'/>
-        <label htmlFor='password' id='tags'>Password: </label>
-        <input name='password' type='password'/>
-        <button type='button'>Ok</button>
-      </main>
-    </div>
+  return (
+    <main role='main' className='login'>
+      <p>Login to access the full dashboard</p>
+      <label htmlFor='email'>Email</label>
+      <input type='email' name='email' id='email' />
+      <label htmlFor='password'>Password</label>
+      <input type='password' name='password' id='password' />
+      <button type='button'>OK</button>
+    </main>
   );
 }
 

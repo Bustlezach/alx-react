@@ -1,8 +1,7 @@
 .Notifications {
-  border: 1px dashed rgb(228, 21, 90);
-  padding: 0 2rem 0 1rem;
+  border: thin dotted #e0344a;
+  padding: 4px 16px;
   float: right;
-  margin-right: 1rem;
 }
 [data-notification-type='default'] {
   color: blue;
@@ -14,5 +13,5 @@
 
 .menuItem {
   text-align: right;
-  margin-right: 2rem;
+  margin-right: 16px;
 }
