@@ -7,6 +7,10 @@ import CourseList from '../CourseList/CourseList';
 import PropTypes from 'prop-types';
 import './App.css';
 import { getLatestNotification } from '../utils/utils';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
+import BodySection from '../BodySection/BodySection';
+
+
 
 
 class App extends Component {
@@ -44,9 +48,20 @@ class App extends Component {
     const { isLoggedIn } = this.props;
     return (
       <Fragment>
-        <Notifications listNotifications={listNotifications}/>
+        <Notifications listNotifications={listNotifications} />
         <Header />
-        {isLoggedIn ? (<CourseList listCourses={listCourses}/>) : (<Login />)}
+        {isLoggedIn ? (
+          <BodySectionWithMarginBottom title='Course list'>
+            <CourseList listCourses={listCourses} />
+          </BodySectionWithMarginBottom>
+        ) : (
+          <BodySectionWithMarginBottom title='Log in to continue'>
+            <Login />
+          </BodySectionWithMarginBottom>
+        )}
+        <BodySection title='News from the School'>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </BodySection>
         <Footer />
       </Fragment>
     );
