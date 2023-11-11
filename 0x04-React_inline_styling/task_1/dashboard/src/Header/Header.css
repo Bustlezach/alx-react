@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  color: rgb(231, 80, 80);
+  border-bottom: thick solid rgb(231, 80, 80);
+  width: 100rem;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header img {
+  width: 150px;
+}
