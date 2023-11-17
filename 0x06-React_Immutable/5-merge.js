@@ -7,7 +7,6 @@ export function concatElements(page1, page2) {
   return list2;
 }
 
-
 export function mergeElements(page1, page2) {
   const map = Map(page1);
   const map1 = Map(page2);

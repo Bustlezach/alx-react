@@ -3,9 +3,7 @@ import { Seq } from 'immutable';
 function printBestStudents(object) {
   const seq = Seq(object);
 
-
   const screened = seq.filter((student) => {
-    student.firstName.charAt(0).toUpperCase();
     return student.score > 70;
   });
 
@@ -15,10 +13,9 @@ function printBestStudents(object) {
 
   const JSObject = screened.toJS();
 
-  Object.keys(JSObject).map((key) => {
+  Object.keys(JSObject).forEach((key) => {
     JSObject[key].firstName = capFLetter(JSObject[key].firstName);
     JSObject[key].lastName = capFLetter(JSObject[key].lastName);
-    return JSObject[key];
   });
 
   console.log(JSObject);
